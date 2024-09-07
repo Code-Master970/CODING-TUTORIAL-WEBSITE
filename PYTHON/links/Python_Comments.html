@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    :root{
+    --bg-color: #fff;
+    --snd-bg-color:#dddfdf;
+    --text-color:#000;
+    --main-color: #007bff;
+    --hover-color: #0056b3;
+}
+        .welcome p{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 0.3rem;
+}
+.prev-next-top a{
+    position: absolute;
+    top: 125px;
+    margin-top: 30px;
+    
+}
+.next-btn a{
+    position: absolute;
+    left: 40rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    /* margin-bottom:; */
+
+    padding: 0.6em 1rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: #ffffff;
+    background-color: var(--main-color);
+}
+.next-btn a:hover{
+    background-color:var(--hover-color) !important;
+}
+.prev-btn a{
+    position: absolute;
+    left: 3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    /* margin-bottom: 10px; */
+    padding: 0.6em 1.4rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: #ffffff;
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.prev-btn a:hover{
+    background-color:var(--hover-color) !important;
+}
+.content{
+    margin-top: 40px;
+}
+.prev-next-bottom{
+    margin-top: 0.5rem;
+    margin-bottom: 5rem;
+}
+.w3-codespan {
+    font-size: 105%;
+    background-color: rgba(222, 222, 222, 0.3);
+    color: crimson;
+    /* background-color: #f1f1f1; */
+    padding-left: 4px;
+    padding-right: 4px;
+    /* font-size: 110%; */
+    font-family: Consolas, Menlo, "courier new", monospace;
+}
+h1 {
+    font-size: 42px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+}
+.intro {
+    font-size: 16px;
+}
+p {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+h2 {
+    font-size: 32px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+}
+h3 {
+    font-size: 28px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    padding-top: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+body {
+    font-family: Verdana, sans-serif;
+    /* font-size: 15px; */
+    line-height: 1.5;
+    padding: 16px 32px 32px 32px;
+    background-color: #fff !important;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+.w3-example {
+    padding: 8px 20px;
+    margin: 24px -20px;
+    box-shadow: none !important;
+}
+.w3-code {
+    font-size: 15px;
+    border-left: 4px solid var(--main-color);
+    margin-top: 12px !important;
+    margin-bottom: 16px !important;
+    width: auto;
+    background-color: #fff;
+    color: #000;
+    padding: 8px 12px;
+    word-wrap: break-word;
+    font-family: Consolas, Menlo, "courier new", monospace;
+}
+.w3-example {
+    padding: 0px 20px;
+    margin: 24px -20px;
+    box-shadow: none !important;
+    background-color: #E7E9EB;
+    border-radius: 5px;
+}
+.w3-btn:hover, .w3-btn:active {
+    box-shadow: none;
+    background-color: var(--hover-color) !important;
+}
+.w3-btn, .w3-btn:link {
+    color: #FFFFFF;
+    background-color: var(--main-color);
+}
+.w3-example .w3-btn {
+    background-color: var(--main-color) !important;
+    border-radius: 5px;
+    font-size: 17px;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 6px 18px;
+}
+.w3-margin-bottom {
+    margin-bottom: 16px !important;
+}
+.w3-btn, .w3-button {
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+img{
+    align-items: center;
+    display: block;
+    padding-left: 5rem;
+    max-width: 80%;
+    height: auto;
+}
+    </style>
+
+</head>
+<body>
+    
+
+    <h1><p>Python Comments</p></h1>
+    <div class="prev-next-top">
+
+        <div class="next-btn">
+            <a href="Python_Variables.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="3.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+
+    <hr style="margin-top: 90px; opacity: 0.3;">
+    <p class="intro">Comments can be used to explain Python code.</p>
+    <p class="intro">Comments can be used to make the code more readable.</p>
+    <p class="intro">Comments can be used to prevent execution when testing code.</p>
+    <hr style="margin-top: 30px; opacity: 0.3;">
+    <h2>Creating a Comment</h2>
+    <p>
+        Comments starts with a 
+        <code class="w3-codespan">#</code>
+        , and Python will ignore them:
+    </p>
+    <div class="w3-example">
+        <h3>Example</h3>
+        <div class="w3-code notranslate pythonHigh"><span class="pythoncolor" style="color:black">
+            <span class="commentcolor" style="color:green">#This is a comment<br></span>
+            <span class="pythonkeywordcolor" style="color:mediumblue">print</span>(<span class="pythonstringcolor" style="color:brown">"Hello, World!"</span>)<span class="pythonnumbercolor" style="color:red">
+            </span> </span></div>
+        <a target="_blank" class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/python/trypython.asp?filename=demo_comment1">Try it Yourself »</a>
+    </div>
+    <p>
+        Comments can be placed at the end of a line, and Python will ignore the rest of the line:
+    </p>
+    <div class="w3-example">
+        <h3>Example</h3>
+        <div class="w3-code notranslate pythonHigh"><span class="pythoncolor" style="color:black">
+        <span class="pythonkeywordcolor" style="color:mediumblue">print</span>(<span class="pythonstringcolor" style="color:brown">"Hello, World!"</span>) <span class="commentcolor" style="color:green">#This is a comment
+         </span></span></div>
+        <a target="_blank" class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/python/trypython.asp?filename=demo_comment2">Try it Yourself »</a>
+    </div>
+    <p>A comment does not have to be text that explains the code, it can also be used to prevent Python from executing code:</p>
+    <div class="w3-example">
+        <h3>Example</h3>
+        <div class="w3-code notranslate pythonHigh"><span class="pythoncolor" style="color:black"><span class="pythonnumbercolor" style="color:red">
+        </span>  <span class="commentcolor" style="color:green">#print("Hello, World!")<br></span><span class="pythonkeywordcolor" style="color:mediumblue">print</span>(<span class="pythonstringcolor" style="color:brown">"Cheers, Mate!"</span>) </span></div>
+        <a target="_blank" class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/python/trypython.asp?filename=demo_comment3">Try it Yourself »</a>
+    </div>
+    <hr style="margin-top: 30px;opacity: 0.3;">
+    <h2>Multiline Comments</h2>
+    <p>Python does not really have a syntax for multiline comments.</p>
+    <p>
+        To add a multiline comment you could insert a 
+        <code class="w3-codespan">#</code>
+        for each line:
+    </p>
+    <div class="w3-example">
+        <h3>Example</h3>
+        <div class="w3-code notranslate pythonHigh"><span class="pythoncolor" style="color:black"><span class="pythonnumbercolor" style="color:red">
+        </span>  <span class="commentcolor" style="color:green">#This is a comment<br></span><span class="commentcolor" style="color:green">#written in<br></span><span class="commentcolor" style="color:green">#more than just one line<br></span><span class="pythonkeywordcolor" style="color:mediumblue">print</span>(<span class="pythonstringcolor" style="color:brown">"Hello, 
+          World!"</span>)<span class="pythonnumbercolor" style="color:red">
+        </span> </span></div>
+        <a target="_blank" class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/python/trypython.asp?filename=demo_comment4">Try it Yourself »</a>
+    </div>
+    <p>Or, not quite as intended, you can use a multiline string.</p>
+    <p>Since Python will ignore string literals that are not assigned to a variable, you can add a multiline string (triple quotes) in your code, and place your comment inside it:</p>
+    <div class="w3-example">
+        <h3>Example</h3>
+        <div class="w3-code notranslate pythonHigh"><span class="pythoncolor" style="color:black"><span class="pythonnumbercolor" style="color:red">
+        </span>  <span class="pythonstringcolor" style="color:brown">""</span><span class="pythonstringcolor" style="color:brown">"<br>This is a comment<br>written in <br>more than just 
+          one line<br>"</span><span class="pythonstringcolor" style="color:brown">""</span><br><span class="pythonkeywordcolor" style="color:mediumblue">print</span>(<span class="pythonstringcolor" style="color:brown">"Hello, World!"</span>) </span></div>
+        <a target="_blank" class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/python/trypython.asp?filename=demo_comment5">Try it Yourself »</a>
+    </div>
+    <p>As long as the string is not assigned to a variable, Python will read the code, but then ignore it, and you have made a multiline comment.</p>
+
+    <hr style="margin-top: 30px; opacity: 0.3;">
+
+    <h2 style="text-align: center;">Video: Python Comments</h2>
+    <a href="https://www.youtube.com/watch?v=9wouY9nWe0k&list=PLP9IO4UYNF0UgPfkTBECSKIJGdc_9FYZ9" target="_blank"><img src="images/v3.png" alt="python intro"></a>
+
+    <hr style="margin-top: 30px; opacity: 0.3;">
+    <div class="prev-next-bottom">
+        <div class="next-btn">
+            <a href="Python_Variables.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="3.html" class="prev-btn">Previous</a>
+        </div>
+    </div>
+</body>
+</html>

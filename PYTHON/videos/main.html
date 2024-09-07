@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        :root{
+            --bg-color: #fff;
+            --snd-bg-color:#dddfdf;
+            --text-color:#000;
+            --main-color: #007bff;
+            --hover-color: #0056b3;
+
+        }
+        h1 {
+            color: #444;
+            margin-top: 5rem;
+        }
+        h3{
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            margin-left: 10rem;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-container input[type="text"] {
+            width: 300px;
+            padding: 10px 10px 10px 40px; /* Add padding to make space for the icon */
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .search-container .search-icon {
+            position: absolute;
+            left: 12.2rem;
+            top: 35.3%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #888;
+        }
+        select, button {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        img{
+        align-items: center;
+        display: block;
+        margin-left: 5rem;
+        border-radius: 40px;
+        max-width: 80%;
+        height: 26rem;
+        width: 50rem;
+    
+        }
+        img:hover{
+            cursor: pointer;
+            border-radius: 40px;
+            border:5px solid var(--main-color);
+            transition: all 0.5s ease;
+            box-shadow: 0 0 5px var(--main-color);
+            transition: 0.1s ease-in-out;
+        }
+        .video{
+            margin-bottom: 10rem;
+        }
+        p{
+            font-size: 25px;
+            font-weight: 200;
+            justify-content: center;
+            padding-left: 5rem;
+            line-height: 1.6rem;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1>Search Google or YouTube</h1>
+    <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchQuery" placeholder="Enter your search term">
+        <select id="searchEngine">
+            <option value="google">Google</option>
+            <option value="youtube">YouTube</option>
+        </select>
+        <button onclick="performSearch()">Search</button>
+    </div>
+
+    <hr style="margin-top: 50px; opacity: 0.3; margin-bottom: 20px;">
+
+    <h1>Our Best Preferences On Youtube</h1>
+
+    <div class="video">
+        <a href="https://www.youtube.com/watch?v=xkZMUX_oQX4&list=PLP9IO4UYNF0UgPfkTBECSKIJGdc_9FYZ9" target="_blank"><img src="screenshots/1.png" alt="python intro"></a>
+        <p class="video-caption">Full playlist of w3schools python tutorial(Best for pre beginners).</p>
+    </div>
+
+    <div class="video">
+        <a href="https://www.youtube.com/watch?v=6R0TkF6Mgrk" target="_blank"><img src="screenshots/2.png" alt="python intro"></a>
+        <p class="video-caption">Full roadmap of python in 2024 form 'Code With Harry'.</p>
+    </div>
+
+    <div class="video">
+        <a href="https://www.youtube.com/watch?v=7wnove7K-ZQ&list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg&index=1" target="_blank"><img src="screenshots/3.png" alt="python intro"></a>
+        <p class="video-caption"> Python 100 Days of Code from 'Code With Harry'.</p>
+    </div>
+
+    <div class="video">
+        <a href="https://www.youtube.com/watch?v=UrsmFxEIp5k" target="_blank"><img src="screenshots/4.png" alt="python intro"></a>
+        <p class="video-caption">THE ULIMATE COURSE of python from 'Code With Harry'..</p>
+    </div>
+
+
+
+    <hr style="margin-top: 50px; opacity: 0.3; margin-bottom: 20px;">
+
+
+
+    
+
+    <script>
+        function performSearch() {
+            var query = document.getElementById('searchQuery').value;
+            var engine = document.getElementById('searchEngine').value;
+
+            if (engine === "google") {
+                window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
+            } else if (engine === "youtube") {
+                window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(query), '_blank');
+            }
+        }
+    </script>
+
+    
+</body>
+</html>

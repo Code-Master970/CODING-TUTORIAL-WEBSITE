@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+    background-color: #fff !important;
+    margin-top: 90px;
+    padding: 16px 32px 32px 32px;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+:root{
+    --bg-color: #fff;
+    --snd-bg-color:#dddfdf;
+    --text-color:#000;
+    --main-color: #007bff;
+    --hover-color: #0056b3;
+
+}
+.welcome p{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 0.2rem;
+}
+.prev-next-top a{
+    position: absolute;
+    top: 125px;;
+    margin-top: 60px;
+    
+}
+.next-btn a{
+    position: absolute;
+    left: 40rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+
+    padding: 0.6em 1rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.next-btn a:hover{
+    background-color:var(--hover-color);
+}
+.prev-btn a{
+    position: absolute;
+    left: 3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+    padding: 0.6em 1.4rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.prev-btn a:hover{
+    background-color:var(--hover-color);
+}
+.content{
+    margin-top: 40px;
+}
+
+h2 {
+    font-size: 32px;
+}
+h2 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+}
+/* h2 {
+    font-size: 30px;
+} */
+h2 {
+    display: block;
+    /* font-size: 1.5em; */
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* font-weight: bold; */
+    unicode-bidi: isolate;
+}
+h3 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+    font-size: 24px;
+}
+h3 {
+    display: block;
+    /* font-size: 1.17em; */
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* font-weight: bold; */
+    unicode-bidi: isolate;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+}
+p {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    font-size: 15px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+ul {
+    list-style-type: disc;
+}
+.prev-next-bottom{
+    margin-top: 0.5rem;
+    margin-bottom: 5rem;
+}
+
+.ex_box{
+    max-width: 100%;
+    height: 30%;
+    background-color: var(--snd-bg-color);
+    margin-left: -1.2rem;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+.ex_box p{
+    margin-left: 2rem;
+    padding-top: 12px;
+    font-size: 25px;
+}
+.code_bg{
+    background-color: var(--bg-color);
+    margin-left: 2rem;
+    margin-top: 15px;
+    padding-bottom: 0px;
+    border-left: 5px solid var(--main-color);
+}
+.code_bg pre {
+    text-align: left;
+    padding-left: 6px;
+    font-size: 18px;
+
+}
+.try_btn{
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+.try_btn a{
+    position: static;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-top: 20px;
+
+    text-decoration: none;
+    padding: 0.5em 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+}
+.try_btn a:hover{
+    background-color:var(--hover-color);
+}
+img{
+    align-items: center;
+    display: block;
+    padding-left: 5rem;
+    max-width: 80%;
+    height: auto;
+}
+.w3-codespan {
+    font-size: 105%;
+    background-color: rgba(222, 222, 222, 0.3);
+    color: crimson;
+    /* background-color: #f1f1f1; */
+    padding-left: 4px;
+    padding-right: 4px;
+    /* font-size: 110%; */
+    font-family: Consolas, Menlo, "courier new", monospace;
+}
+.note {
+    font-size: 15px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: -32px;
+    margin-right: -32px;
+    padding: 16px 32px;
+    border-left: none;
+    background-color: #ffffcc;
+}
+.underline{
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+.underline:hover{
+    color: green;
+}
+</style>
+
+</head>
+<body>
+    
+    <div class="welcome">
+        <p>Python User Input</p>
+    </div>
+    
+    <div class="prev-next-top">
+
+        <div class="next-btn">
+            <a href="Python_Casting.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="Python_Numbers.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+
+    <hr style="margin-top: 90px; opacity: 0.3;">
+    <div class="content">
+
+        <h2>User Input</h2>
+        <p>Python allows for user input.</p>
+        <p>That means we are able to ask the user for input.</p>
+        <p>The method is a bit different in Python 3.6 than Python 2.7.</p>
+        <p>Python 3.6 uses the <code class="w3-codespan">input()</code> method.</p>
+        <p>Python 2.7 uses the <code class="w3-codespan">raw_input()</code> method.</p>
+        <p>The following example asks for the username, and when you entered the username, it gets printed on the screen:</p>
+        
+        <div class="ex_box">
+            <p>Python 3.6</p>
+            <div class="code_bg">
+                <pre>username = input("Enter username:")
+print("Username is: " + username)
+                </pre>
+            </div>
+        
+             <div class="try_btn"><a href="https://www.w3schools.com/python/showpython.asp?filename=demo_user_input3" target="_blank">Try With Yourself>></a></div> 
+        </div>
+        <div class="ex_box">
+            <p>Python 2.7</p>
+            <div class="code_bg">
+                <pre>username = raw_input("Enter username:")
+print("Username is: " + username)
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/showpython.asp?filename=demo_user_input2" target="_blank">Try With Yourself>></a></div>
+        </div>
+
+        <div class="note">
+            <p><strong>Note:</strong>
+                <p>Python stops executing when it comes to the input() function, and continues when the user has given some input.</p>
+        </div>
+        
+        <hr style="margin-top: 30px; opacity: 0.3;">
+    <div class="prev-next-bottom">
+
+        <div class="next-btn">
+            <a href="Python_Casting.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="Python_Numbers.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

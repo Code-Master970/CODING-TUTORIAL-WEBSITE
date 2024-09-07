@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+    background-color: #fff !important;
+    margin-top: 90px;
+    padding: 16px 32px 32px 32px;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+:root{
+    --bg-color: #fff;
+    --snd-bg-color:#dddfdf;
+    --text-color:#000;
+    --main-color: #007bff;
+    --hover-color: #0056b3;
+
+}
+.welcome p{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 0.2rem;
+}
+.prev-next-top a{
+    position: absolute;
+    top: 125px;;
+    margin-top: 60px;
+    
+}
+.next-btn a{
+    position: absolute;
+    left: 40rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+
+    padding: 0.6em 1rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.next-btn a:hover{
+    background-color:var(--hover-color);
+}
+.prev-btn a{
+    position: absolute;
+    left: 3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+    padding: 0.6em 1.4rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.prev-btn a:hover{
+    background-color:var(--hover-color);
+}
+.content{
+    margin-top: 40px;
+}
+
+h2 {
+    font-size: 32px;
+}
+h2 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+}
+/* h2 {
+    font-size: 30px;
+} */
+h2 {
+    display: block;
+    /* font-size: 1.5em; */
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* font-weight: bold; */
+    unicode-bidi: isolate;
+}
+h3 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+    font-size: 24px;
+}
+h3 {
+    display: block;
+    /* font-size: 1.17em; */
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* font-weight: bold; */
+    unicode-bidi: isolate;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+}
+p {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    font-size: 15px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+/* For red text */
+span{
+    color: red;
+}
+/* For red text */
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+ul {
+    list-style-type: disc;
+}
+.prev-next-bottom{
+    margin-top: 0.5rem;
+    margin-bottom: 5rem;
+}
+
+.ex_box{
+    max-width: 100%;
+    height: 30%;
+    background-color: var(--snd-bg-color);
+    margin-left: -1.2rem;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+.ex_box p{
+    margin-left: 2rem;
+    padding-top: 12px;
+    font-size: 25px;
+}
+.code_bg{
+    background-color: var(--bg-color);
+    margin-left: 2rem;
+    margin-top: 15px;
+    padding-bottom: 0px;
+    border-left: 5px solid var(--main-color);
+}
+.code_bg pre {
+    text-align: left;
+    padding-left: 6px;
+    font-size: 18px;
+
+}
+.try_btn{
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+.try_btn a{
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-top: 20px;
+
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+}
+.try_btn a:hover{
+    background-color:var(--hover-color);
+}
+
+.table{
+    padding-left: 2rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 70%;
+    display: table;
+    border: 1px solid black;
+
+}
+.table td:first-child {
+    padding-left: 16px;
+}
+.table td:last-child {
+    width: 250px; /* Ensure buttons have enough space */
+    padding-right: 10px; /* Adjust padding for last cell */
+}
+
+
+.table td {
+    width: 70%;
+    padding: 10px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+}
+.table tr:nth-child(even){background-color: #f2f2f2;}
+
+.try_it a {
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    padding: 0.4em 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 550;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    width: auto;
+    white-space: nowrap;
+    display: inline-block; /* Ensures consistent block-level styling */
+    box-sizing: border-box;/* Ensures padding doesn't affect the width */
+}
+
+.try_it a:hover {
+    background-color: var(--hover-color);
+}
+
+    </style>
+
+</head>
+<body>
+
+    <div class="welcome">
+        <p>Python Data Types</p>
+    </div>
+    
+    <div class="prev-next-top">
+
+        <div class="next-btn">
+            <a href="Python_Numbers.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="Python_Variables.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+
+    <hr style="margin-top: 90px; opacity: 0.3;">
+
+    <h2>Built-in Data Types</h2>
+    <p>In programming, data type is an important concept.</p>
+    <p>Variables can store data of different types, and different types can do different things.</p>
+    <p>Python has the following data types built-in by default, in these categories:</p>
+
+    <div style="padding-left: 20px;">
+    <p>Text Type:	    <span>str</span></p>
+    <p>Numeric Types:	<span>int, float, complex</span></p>
+    <p>Sequence Types:	<span>list, tuple, range</span></p>
+    <p>Mapping Type:	<span>dict</span></p>
+    <p>Set Types:	    <span>set, frozenset</span></p>
+    <p>Boolean Type:	<span>bool</span></p>
+    <p>Binary Types:	<span>bytes, bytearray, memoryview</span></p>
+    <p>None Type:	    <span>NoneType</span></p>
+    </div>
+
+    <hr style="margin-top: 40px; opacity: 0.3; margin-bottom: 20px;">
+
+    <h2>Getting The Data Type</h2>
+
+    <p>You can get the data type of any object by using the <span>type()</span> function:</p>
+
+    <div class="ex_box">
+        <p>Example</p>
+    
+        <div class="code_bg">
+            <pre>x = 5
+print(type(x))
+            </pre>
+        </div>
+    
+        <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try it Yourself>></a></div>
+    </div>
+
+    <hr style="margin-top: 40px; opacity: 0.3; margin-bottom: 20px;">
+
+    <h2>Setting The Data Type</h2>
+
+    <p>In Python, the data type is set when you assign a value to a variable:</p>
+
+    <div class="table">
+
+        <table>
+            <tr>
+                <td style="font-weight: 700;">Example</td>
+                <td style="font-weight: 700;">Data Type</td>
+                <td style="font-weight: 700;">Try it</td>
+            </tr>
+
+            <tr>
+                <td>x = 20</td>
+                <td>str</td>
+                <td ><div class="try_it"><a class="try_it" href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_str"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = 8.5</td>
+                <td>float</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_int" target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = 1j</td>
+                <td>complex</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_float" target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = ["apple", "banana", "cherry"]</td>
+                <td>list</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_complex"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = ("apple", "banana", "cherry")</td>
+                <td>tuple</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = range(6)</td>
+                <td>range</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_tuple"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = {"name" : "John", "age" : 36}</td>
+                <td>dict</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = {"apple", "banana", "cherry"}</td>
+                <td>set</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = frozenset({"apple", "banana", "cherry"})</td>
+                <td>frozenset</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = True</td>
+                <td>bool</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = b"Hello"</td>
+                <td>bool</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = bytearray(5)</td>
+                <td>bytearray</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = memoryview(bytes(5))</td>
+                <td>memoryview</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = None</td>
+                <td>Nonetype</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <hr style="margin-top: 50px; opacity: 0.3; margin-bottom: 20px;">
+
+    <h2>Setting Up Specific Data Type</h2>
+    <p>If you want to specify the data type, you can use the following constructor functions:</p>
+
+    <div class="table">
+
+        <table>
+            <tr>
+                <td style="font-weight: 700;">Example</td>
+                <td style="font-weight: 700;">Data Type</td>
+                <td style="font-weight: 700;">Try it</td>
+            </tr>
+
+            <tr>
+                <td>x = 20</td>
+                <td>str</td>
+                <td ><div class="try_it"><a class="try_it" href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_str">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = 8.5</td>
+                <td>float</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = 1j</td>
+                <td>complex</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = ["apple", "banana", "cherry"]</td>
+                <td>list</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = ("apple", "banana", "cherry")</td>
+                <td>tuple</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = range(6)</td>
+                <td>range</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = {"name" : "John", "age" : 36}</td>
+                <td>dict</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = {"apple", "banana", "cherry"}</td>
+                <td>set</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = frozenset({"apple", "banana", "cherry"})</td>
+                <td>frozenset</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = True</td>
+                <td>bool</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = b"Hello"</td>
+                <td>bool</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = bytearray(5)</td>
+                <td>bytearray</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = memoryview(bytes(5))</td>
+                <td>memoryview</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+
+            <tr>
+                <td>x = None</td>
+                <td>Nonetype</td>
+                <td><div class="try_it"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_type_list"target="_blank">Try it</a></div></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <hr style="margin-top: 50px; opacity: 0.3; margin-bottom: 20px;">
+
+    <div class="prev-next-bottom">
+
+        <div class="next-btn">
+            <a href="Python_Variables.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="Python_Numbers.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+</body>
+</html>

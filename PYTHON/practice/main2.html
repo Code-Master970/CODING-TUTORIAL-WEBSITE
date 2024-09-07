@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Questions</title>
+    <style>
+        /* Main body style */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f3f4f6, #e8ebf0);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Page header */
+        h1 {
+            color: #0044cc;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 42px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Section headers */
+        h2 {
+            color: #444;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #0044cc;
+            padding-bottom: 10px;
+            font-size: 30px;
+            letter-spacing: 1px;
+            animation: slideInLeft 1.5s ease-out;
+        }
+
+        /* List of questions */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* List item styles */
+        li {
+            margin: 15px 0;
+            padding: 18px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Hover effect for list items */
+        li:hover {
+            background: linear-gradient(135deg, #0044cc, #1a73e8);
+            color: #fff;
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0, 68, 204, 0.3);
+        }
+
+        /* Arrow before list item */
+        li:before {
+            content: '\27A4'; /* Arrow symbol */
+            position: absolute;
+            left: -40px;
+            color: #0044cc;
+            font-size: 22px;
+            transition: color 0.3s ease;
+        }
+
+        /* Change arrow color on hover */
+        li:hover:before {
+            color: #fff;
+        }
+
+        /* Animation for page header */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Slide in animation for section headers */
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Fade in and up animation for list */
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            li {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python Questions</h1>
+    
+    <h2>Basic Statements</h2>
+    <ul>
+        <li>What is the difference between print() and input() functions?</li>
+        <li>How do you declare a variable in Python? Give an example.</li>
+        <li>What is a comment in Python, and how do you write one?</li>
+        <li>Explain how Python is an interpreted language.</li>
+        <li>How do you write a multi-line comment in Python?</li>
+        <li>What are the rules for naming variables in Python?</li>
+        <li>How can you swap two variables in Python without using a third variable?</li>
+    </ul>
+    
+    <h2>Data Types</h2>
+    <ul>
+        <li>What are the different data types in Python?</li>
+        <li>How do you convert a string to an integer in Python?</li>
+        <li>Explain the use of type() function in Python.</li>
+        <li>What is the difference between a list and a tuple in Python?</li>
+        <li>How do you create a dictionary in Python?</li>
+        <li>What is the difference between append() and extend() methods in a list?</li>
+        <li>How do you slice a string in Python?</li>
+        <li>What is the difference between mutable and immutable types in Python?</li>
+        <li>How can you reverse a list in Python?</li>
+        <li>What is the purpose of the len() function in Python?</li>
+    </ul>
+    
+    <h2>Conditional Statements</h2>
+    <ul>
+        <li>What is an if statement, and how is it used in Python?</li>
+        <li>Write a Python program to check if a number is even or odd.</li>
+        <li>How do you write an if-else statement in Python?</li>
+        <li>What is the difference between if-elif-else and nested if statements?</li>
+        <li>Write a Python program to find the largest of three numbers using nested if statements.</li>
+        <li>How do you use logical operators (and, or, not) in conditional statements?</li>
+        <li>Write a Python program that checks if a given year is a leap year.</li>
+        <li>What is the pass statement, and when would you use it in Python?</li>
+    </ul>
+    
+    <h2>Loops</h2>
+    <ul>
+        <li>What is a for loop, and how is it used in Python?</li>
+        <li>Write a Python program to print numbers from 1 to 10 using a for loop.</li>
+        <li>What is a while loop? Write a Python program to sum the numbers from 1 to 5 using a while loop.</li>
+        <li>How do you iterate over a dictionary in Python?</li>
+        <li>Write a Python program to print the first 10 Fibonacci numbers using a loop.</li>
+        <li>Explain the difference between for and while loops in Python.</li>
+        <li>What is an infinite loop, and how can it be created in Python?</li>
+        <li>How do you iterate over the keys and values of a dictionary simultaneously?</li>
+    </ul>
+    
+    <h2>Loop Control Statements</h2>
+    <ul>
+        <li>What are break and continue statements, and how are they used in loops?</li>
+        <li>Write a Python program that prints numbers from 1 to 5 but skips the number 3 using a continue statement.</li>
+        <li>Explain the purpose of the else clause in a loop.</li>
+        <li>How does the break statement affect the flow of a loop?</li>
+        <li>Write a Python program that asks the user to guess a number between 1 and 10, and stops when the correct number is guessed using a break statement.</li>
+        <li>What is the difference between the break and return statements in Python?</li>
+        <li>How do nested loops work in Python? Provide an example.</li>
+        <li>Write a Python program that prints a multiplication table using nested loops.</li>
+    </ul>
+
+</body>
+</html>

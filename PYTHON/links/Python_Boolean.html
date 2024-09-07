@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+    background-color: #fff !important;
+    margin-top: 90px;
+    padding: 16px 32px 32px 32px;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+:root{
+    --bg-color: #fff;
+    --snd-bg-color:#dddfdf;
+    --text-color:#000;
+    --main-color: #007bff;
+    --hover-color: #0056b3;
+
+}
+.welcome p{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 0.2rem;
+}
+.prev-next-top a{
+    position: absolute;
+    top: 125px;;
+    margin-top: 60px;
+    
+}
+.next-btn a{
+    position: absolute;
+    left: 40rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+
+    padding: 0.6em 1rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.next-btn a:hover{
+    background-color:var(--hover-color);
+}
+.prev-btn a{
+    position: absolute;
+    left: 3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+    padding: 0.6em 1.4rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.prev-btn a:hover{
+    background-color:var(--hover-color);
+}
+.content{
+    margin-top: 40px;
+}
+
+h2 {
+    font-size: 32px;
+}
+h2 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+}
+/* h2 {
+    font-size: 30px;
+} */
+h2 {
+    display: block;
+    /* font-size: 1.5em; */
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* font-weight: bold; */
+    unicode-bidi: isolate;
+}
+h3 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+    font-size: 24px;
+}
+h3 {
+    display: block;
+    /* font-size: 1.17em; */
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* font-weight: bold; */
+    unicode-bidi: isolate;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+}
+p {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    font-size: 15px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+ul {
+    list-style-type: disc;
+}
+.prev-next-bottom{
+    margin-top: 0.5rem;
+    margin-bottom: 5rem;
+}
+
+.ex_box{
+    max-width: 100%;
+    height: 30%;
+    background-color: var(--snd-bg-color);
+    margin-left: -1.2rem;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+.ex_box p{
+    margin-left: 2rem;
+    padding-top: 12px;
+    font-size: 25px;
+}
+.code_bg{
+    background-color: var(--bg-color);
+    margin-left: 2rem;
+    margin-top: 15px;
+    padding-bottom: 0px;
+    border-left: 5px solid var(--main-color);
+}
+.code_bg pre {
+    text-align: left;
+    padding-left: 6px;
+    font-size: 18px;
+
+}
+.try_btn{
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+.try_btn a{
+    position: static;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-top: 20px;
+
+    text-decoration: none;
+    padding: 0.5em 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+}
+.try_btn a:hover{
+    background-color:var(--hover-color);
+}
+img{
+    align-items: center;
+    display: block;
+    padding-left: 5rem;
+    max-width: 80%;
+    height: auto;
+}
+.w3-codespan {
+    font-size: 105%;
+    background-color: rgba(222, 222, 222, 0.3);
+    color: crimson;
+    /* background-color: #f1f1f1; */
+    padding-left: 4px;
+    padding-right: 4px;
+    /* font-size: 110%; */
+    font-family: Consolas, Menlo, "courier new", monospace;
+}
+.note {
+    font-size: 15px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: -32px;
+    margin-right: -32px;
+    padding: 16px 32px;
+    border-left: none;
+    background-color: #ffffcc;
+}
+.underline{
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+.underline:hover{
+    color: green;
+}
+
+    </style>
+
+</head>
+<body>
+    
+
+    
+    <div class="welcome">
+        <p>Python Booleans</p>
+    </div>
+    
+    <div class="prev-next-top">
+
+        <div class="next-btn">
+            <a href="Python_Operators.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="Python_Strings.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+
+    <hr style="margin-top: 90px; opacity: 0.3;">
+    <p>Booleans represent one of two values: <code class="w3-codespan">True</code> or <code class="w3-codespan">False</code>.</p>
+    <hr style="margin-top: 20px; opacity: 0.3;">
+    <div class="content">
+
+        <h2>Boolean Values</h2>
+        <p>In programming you often need to know if an expression is <code class="w3-codespan">True</code> or <code class="w3-codespan">False</code>.</p>
+        <p>You can evaluate any expression in Python, and get one of two answers, <code class="w3-codespan">True</code> or <code class="w3-codespan">False</code></p>
+        <p>When you compare two values, the expression is evaluated and Python returns the Boolean answer:</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <div class="code_bg">
+                <pre>print(10 > 9)
+print(10 == 9)
+print(10 < 9)
+                </pre>
+            </div>
+        
+             <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div> 
+        </div>
+        <p>When you run a condition in an if statement, Python returns <code class="w3-codespan">True</code> or <code class="w3-codespan">False</code>:</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <p style="font-size: 15px;">Print a message based on whether the condition is <code class="w3-codespan">True</code> or <code class="w3-codespan">False</code>:</p>
+            <div class="code_bg">
+                <pre>a = 200
+b = 33
+if b > a:
+    print("b is greater than a")
+else:
+    print("b is not greater than a")
+                    
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+        <hr style="margin-top: 30px; opacity: 0.3;">
+        <h2>Evaluate Values and Variables</h2>
+        <p>The <code class="w3-codespan">bool()</code> function allows you to evaluate any value, and give you <code class="w3-codespan">True</code> or <code class="w3-codespan">False</code> in return,</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <p style="font-size: 15px;">Evaluate a string and a number:</p>
+            <div class="code_bg">
+                <pre>print(bool("Hello"))
+print(bool(15))
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+        <div class="ex_box">
+            <p>Example</p>
+            <p style="font-size: 15px;">Evaluate two variables:</p>
+            <div class="code_bg">
+                <pre>x = "Hello"
+y = 15
+                    
+print(bool(x))
+print(bool(y))
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+        <hr style="margin-top: 30px; opacity: 0.3;">
+        <h2>Most Values are True</h2>
+        <p>Almost any value is evaluated to <code class="w3-codespan">True</code> if it has some sort of content.</p>
+        <p>Any string is <code class="w3-codespan">True</code>, except empty strings.</p>
+        <p>Any number is <code class="w3-codespan">True</code>, except <code class="w3-codespan">0</code>.</p>
+        <p>Any list, tuple, set, and dictionary are <code class="w3-codespan">True</code>, except empty ones.</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <p style="font-size: 15px;">The following will return True:</p>
+            <div class="code_bg">
+                <pre>bool("abc")
+bool(123)
+bool(["apple", "cherry", "banana"])
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+        <hr style="margin-top: 30px; opacity: 0.3;">
+        <h2>Some Values are False</h2>
+        <p>In fact, there are not many values that evaluate to <code class="w3-codespan">False</code>, except empty values, such as <code class="w3-codespan">()</code>, <code class="w3-codespan">[]</code>, <code class="w3-codespan">{}</code>, <code class="w3-codespan">""</code>, the number <code class="w3-codespan">0</code>, and the value <code class="w3-codespan">None</code>. And of course the value <code class="w3-codespan">False</code> evaluates to <code class="w3-codespan">False</code>.</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <p style="font-size: 15px;">The following will return False:</p>
+            <div class="code_bg">
+                <pre>bool(False)
+bool(None)
+bool(0)
+bool("")
+bool(())
+bool([])
+bool({})
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+        <p>One more value, or object in this case, evaluates to <code class="w3-codespan">False</code>, and that is if you have an object that is made from a class with a <code class="w3-codespan">_len_</code> function that returns <code class="w3-codespan">0</code> or <code class="w3-codespan">False</code>:</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <div class="code_bg">
+                <pre>class myclass():
+    def _len_(self):
+        return 0
+                  
+myobj = myclass()
+print(bool(myobj))
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+        <hr style="margin-top: 30px; opacity: 0.3;">
+        <h2>Functions can Return a Boolean</h2>
+        <p>You can create functions that returns a Boolean Value:</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <p style="font-size: 15px;">Print the answer of a function:</p>
+            <div class="code_bg">
+                <pre>def myFunction() :
+    return True
+                  
+print(myFunction())
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+        <p>You can execute code based on the Boolean answer of a function:</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <p style="font-size: 15px;">Print "YES!" if the function returns True, otherwise print "NO!":</p>
+            <div class="code_bg">
+                <pre>def myFunction() :
+    return True
+                  
+if myFunction():
+    print("YES!")
+else:
+    print("NO!")
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+        <p>Python also has many built-in functions that return a boolean value, like the <code class="w3-codespan">isinstance()</code> function, which can be used to determine if an object is of a certain data type:</p>
+        <div class="ex_box">
+            <p>Example</p>
+            <p style="font-size: 15px;">Check if an object is an integer or not:</p>
+            <div class="code_bg">
+                <pre>x = 200
+print(isinstance(x, int))
+                </pre>
+            </div>
+        
+            <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_default" target="_blank">Try With Yourself>></a></div>
+        </div>
+    <hr style="margin-top: 30px; opacity: 0.3;">
+    <div class="prev-next-bottom">
+
+        <div class="next-btn">
+            <a href="Python_Operators.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="Python_Sets.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

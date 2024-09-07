@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="login.js"></script>
+
+    <style>
+        :root{
+            --bg-color: #fff;
+            --snd-bg-color:#dddfdf;
+            --text-color:#000;
+            --main-color: #007bff;
+            --hover-color: #0056b3;
+
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('C:/Users/SWAPNIL/Documents/Rinex/TUTORIAL WEBSITE/PYTHON/exam/bg2.jpg');
+            width:100%;
+            background-size: 100%;
+            background-repeat: no-repeat ;
+            background-attachment: fixed;
+        }
+        section{
+            margin-left: 2.7em;
+            display: inline-flex;
+            gap: 2rem;
+        }
+
+        .login-container {
+            align-items: center;
+            width: 220px;
+            height: 18rem;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 93.5%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button{
+            margin-top: 2.8rem;
+        }
+        button {
+            width: 100%;
+    padding: 0.75rem;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+    </style>
+
+
+</head>
+<body>
+
+
+    <script>
+    window.onload = function() {
+    // Clear input fields on page load
+    document.getElementById('email1').value = "";
+    document.getElementById('password1').value = "";
+    document.getElementById('email2').value = "";
+    document.getElementById('password2').value = "";
+    document.getElementById('email3').value = "";
+    document.getElementById('password3').value = "";
+    }
+    </script>
+
+
+<section>
+    <div class="login-container">
+        <h2>Level: Easy</h2>
+        <form id="form1" action="#">
+            <div class="input-group">
+                <label for="username">Your Name:</label>
+                <input type="text" id="email1" name="username" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password1" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" id="submit1">Start</button>
+        </form>
+    </div>
+
+    <div class="login-container">
+        <h2>Level: Medium</h2>
+        <form id="form2" action="#">
+            <div class="input-group">
+                <label for="username">Your Name:</label>
+                <input type="text" id="email2" name="username" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password2" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" id="submit2">Start</button>
+        </form>
+    </div>
+
+    <div class="login-container">
+        <h2>Level: Hard</h2>
+        <form id="form3" action="#">
+            <div class="input-group">
+                <label for="username">Your Name:</label>
+                <input type="text" id="email3" name="username" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password3" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" id="submit3">Start</button>
+        </form>
+    </div>
+</section>
+
+
+
+</body>
+</html>

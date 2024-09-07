@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Questions</title>
+    <style>
+        /* CSS Variables for Light and Dark Themes */
+        :root {
+            --background-color: #f3f4f6;
+            --text-color: #333;
+            --primary-color: #0044cc;
+            --secondary-color: #1a73e8;
+            --list-background: #fff;
+            --list-hover-background: linear-gradient(135deg, #0044cc, #1a73e8);
+            --arrow-color: #0044cc;
+            --arrow-hover-color: #fff;
+            --header-color: #0044cc;
+            --section-header-color: #444;
+            --toggle-bg: #e0e0e0;
+            --toggle-knob: #fff;
+            --box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --background-color: #1e1e1e;
+            --text-color: #f0f0f0;
+            --primary-color: #1a73e8;
+            --secondary-color: #4d90fe;
+            --list-background: #2c2c2c;
+            --list-hover-background: linear-gradient(135deg, #1a73e8, #4d90fe);
+            --arrow-color: #1a73e8;
+            --arrow-hover-color: #f0f0f0;
+            --header-color: #1a73e8;
+            --section-header-color: #ddd;
+            --toggle-bg: #4d4d4d;
+            --toggle-knob: #1a73e8;
+            --box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main body style */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        /* Toggle Button Container */
+        .toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* Toggle Button */
+        .toggle-button {
+            width: 60px;
+            height: 30px;
+            background: var(--toggle-bg);
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.5s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Toggle Knob */
+        .toggle-knob {
+            width: 26px;
+            height: 26px;
+            background: var(--toggle-knob);
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.5s, background 0.5s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Toggle Active State */
+        .toggle-button.active {
+            background: var(--primary-color);
+        }
+
+        .toggle-button.active .toggle-knob {
+            transform: translateX(30px);
+            background: var(--toggle-bg);
+        }
+
+        /* Page header */
+        h1 {
+            color: var(--header-color);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 42px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Section headers */
+        h2 {
+            color: var(--section-header-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            font-size: 30px;
+            letter-spacing: 1px;
+            animation: slideInLeft 1.5s ease-out, flash 2s 1.5s infinite alternate;
+        }
+
+        /* List of questions */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* List item styles */
+        li {
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--list-background);
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            transition: all 0.4s ease;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+            transform: perspective(600px) rotateX(0deg);
+        }
+
+        /* Hover effect for list items */
+        li:hover {
+            background: var(--list-hover-background);
+            color: #fff;
+            transform: perspective(600px) rotateX(10deg) translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Arrow before list item */
+        li:before {
+            content: '\27A4'; /* Arrow symbol */
+            position: absolute;
+            left: -40px;
+            color: var(--arrow-color);
+            font-size: 22px;
+            transition: color 0.3s ease;
+        }
+
+        /* Change arrow color on hover */
+        li:hover:before {
+            color: var(--arrow-hover-color);
+        }
+
+        /* Pulse animation for h1 */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Slide in animation for section headers */
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Flash animation for section headers */
+        @keyframes flash {
+            from { opacity: 1; }
+            to { opacity: 0.7; }
+        }
+
+        /* Fade in and up animation for list */
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            li {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toggle Button -->
+    <div class="toggle-container">
+        <div class="toggle-button" id="theme-toggle">
+            <div class="toggle-knob"></div>
+        </div>
+    </div>
+
+    <h1>Python Questions</h1>
+    
+    <h2>Basic Statements</h2>
+    <ul>
+        <li>What is the difference between print() and input() functions?</li>
+        <li>How do you declare a variable in Python? Give an example.</li>
+        <li>What is a comment in Python, and how do you write one?</li>
+        <li>Explain how Python is an interpreted language.</li>
+        <li>How do you write a multi-line comment in Python?</li>
+        <li>What are the rules for naming variables in Python?</li>
+        <li>How can you swap two variables in Python without using a third variable?</li>
+    </ul>
+    
+    <h2>Data Types</h2>
+    <ul>
+        <li>What are the different data types in Python?</li>
+        <li>How do you convert a string to an integer in Python?</li>
+        <li>Explain the use of type() function in Python.</li>
+        <li>What is the difference between a list and a tuple in Python?</li>
+        <li>How do you create a dictionary in Python?</li>
+        <li>What is the difference between append() and extend() methods in a list?</li>
+        <li>How do you slice a string in Python?</li>
+        <li>What is the difference between mutable and immutable types in Python?</li>
+        <li>How can you reverse a list in Python?</li>
+        <li>What is the purpose of the len() function in Python?</li>
+        <li>How do you check the type of an object in Python?</li>
+    </ul>
+    
+    <h2>Conditional Statements</h2>
+    <ul>
+        <li>What is an if statement, and how is it used in Python?</li>
+        <li>Write a Python program to check if a number is even or odd.</li>
+        <li>How do you write an if-else statement in Python?</li>
+        <li>What is the difference between if-elif-else and nested if statements?</li>
+        <li>Write a Python program to find the largest of three numbers using nested if statements.</li>
+        <li>How do you use logical operators (and, or, not) in conditional statements?</li>
+        <li>Write a Python program that checks if a given year is a leap year.</li>
+        <li>What is the pass statement, and when would you use it in Python?</li>
+        <li>What is the ternary conditional operator, and how do you use it in Python?</li>
+    </ul>
+    
+    <h2>Loops</h2>
+    <ul>
+        <li>What is a for loop, and how is it used in Python?</li>
+        <li>Write a Python program to print numbers from 1 to 10 using a for loop.</li>
+        <li>What is a while loop? Write a Python program to sum the numbers from 1 to 5 using a while loop.</li>
+        <li>How do you iterate over a dictionary in Python?</li>
+        <li>Write a Python program to print the first 10 Fibonacci numbers using a loop.</li>
+        <li>Explain the difference between for and while loops in Python.</li>
+        <li>What is an infinite loop, and how can it be created in Python?</li>
+        <li>How do you iterate over the keys and values of a dictionary simultaneously?</li>
+        <li>Write a Python program to print the multiplication table of a given number using a for loop.</li>
+        <li>How do you break out of a loop prematurely in Python?</li>
+        <li>What is the purpose of the continue statement in a loop?</li>
+    </ul>
+    
+    <h2>Functions</h2>
+    <ul>
+        <li>What is a function in Python, and how do you define one?</li>
+        <li>Write a Python function to calculate the factorial of a number.</li>
+        <li>What are the differences between parameters and arguments in Python?</li>
+        <li>Explain the concept of default arguments in Python functions.</li>
+        <li>How do you return multiple values from a function in Python?</li>
+        <li>What is recursion in Python? Provide an example.</li>
+        <li>How do you use the lambda function in Python?</li>
+        <li>What are *args and **kwargs in Python functions?</li>
+        <li>Explain the concept of a higher-order function in Python.</li>
+        <li>How do you write a Python function that takes a variable number of arguments?</li>
+        <li>What is the difference between global and local variables in Python?</li>
+        <li>How can you define an anonymous function in Python?</li>
+        <li>What are the use cases for map(), filter(), and reduce() functions in Python?</li>
+    </ul>
+    
+    <h2>Exception Handling</h2>
+    <ul>
+        <li>What is exception handling in Python, and why is it important?</li>
+        <li>How do you handle exceptions in Python using try and except?</li>
+        <li>Write a Python program that handles division by zero using exception handling.</li>
+        <li>What is the purpose of the finally block in exception handling?</li>
+        <li>How do you raise an exception in Python?</li>
+        <li>Explain the difference between assert and raise statements in Python.</li>
+        <li>What is a try-except-else block, and how is it used?</li>
+        <li>What is a custom exception, and how do you create one in Python?</li>
+        <li>Explain the concept of exception chaining in Python.</li>
+    </ul>
+    
+    <h2>Classes</h2>
+    <ul>
+        <li>What is a class in Python, and how do you define one?</li>
+        <li>Explain the difference between a class and an object in Python.</li>
+        <li>What is the __init__ method in Python classes?</li>
+        <li>How do you create an instance of a class in Python?</li>
+        <li>What are instance variables and class variables in Python?</li>
+        <li>Explain the concept of inheritance in Python with an example.</li>
+        <li>What is method overriding in Python?</li>
+        <li>How do you implement encapsulation in Python classes?</li>
+        <li>What are class methods and static methods in Python?</li>
+        <li>Explain the use of the super() function in Python.</li>
+        <li>What is polymorphism in Python, and how is it achieved?</li>
+        <li>How do you define private and protected members in Python classes?</li>
+        <li>What are magic methods in Python? Provide examples.</li>
+    </ul>
+
+    <script>
+        // Theme Toggle Script
+        const toggleButton = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+
+            if (currentTheme === 'dark') {
+                toggleButton.classList.add('active');
+            }
+        }
+
+        toggleButton.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                toggleButton.classList.remove('active');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                toggleButton.classList.add('active');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>

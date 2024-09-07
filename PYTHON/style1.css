@@ -1,0 +1,328 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: -apple-system, sans-serif;
+}
+
+:root{
+    --bg-color: #fff;
+    --snd-bg-color:#dddfdf;
+    --text-color:#000;
+    --main-color: #007bff;
+    --hover-color: #0056b3;
+
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x:hidden;
+
+}
+body{
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+section{
+    min-height: 100vh;
+    padding: 10rem 8% 2rem;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0px;
+    
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem;
+    margin: 0 0 1rem 5rem;
+    background: whitesmoke;
+    backdrop-filter: blur(10px);
+    transition: all, 0.5, ease;
+}
+
+.logo{
+    padding-left: 5px;
+    margin-left: 10px;
+    font-size: 3rem;
+    position: inline-block;
+    
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.logo:hover{
+    transform: scale(1.1);
+}
+span{
+    color: var(--main-color);
+}
+.navbar{
+    position: absolute;
+    left: 30rem;
+    top:35px;
+    display: flex;
+    padding-left: -40px;
+    
+    
+
+}
+.navbar a {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 5rem;
+    transition: all 0.5s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.navbar li a:hover, .navbar li a:active{
+    color: var(--main-color);
+    text-decoration: underline;
+    
+}
+
+.navbar li .dropdown li{
+    display: block;
+}
+.navbar li .dropdown{
+    width: 100%;
+    background: whitesmoke;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+
+
+.nav-btn{
+    position: absolute;
+    right: 150px;
+    top:20px;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    background: transparent;
+    color:var(--main-color);
+    border: 2px solid var(--main-color);
+    border-radius: 7px;
+    margin-right: 0px;
+    font-size:1.6rem;
+    font-weight: 600;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 18px var(--main-color);
+}
+.nav-btn:hover{
+    background-color: var(--main-color);
+    color:#fff;
+    box-shadow: 0 0 18px var(--main-color);
+}
+
+
+
+/*----------Left section code-------------*/
+.linksheading{
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.leftlinks a{
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--text-color);
+    margin-top: 50px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 30px;
+    margin-top: 50px;
+    padding-right: 30px;
+    justify-content: space-between;
+}
+.leftlinks .l {
+    margin: 0px 10px 10px 0px;
+    width: 215px;
+}
+.leftlinks .l :hover{
+    color: var(--bg-color);
+    background-color:var(--main-color);
+    padding-right: 44px;
+    margin: auto;
+    width: 215px;
+}
+
+
+/*---------------------right section code------------------*/
+
+.welcome {
+    font-size: 50px;
+    font-weight: 400;
+    padding: 70px 0px 10px 70px
+}
+
+.prev-next-top a{
+    position: absolute;
+    top: 100px;
+    margin-top: 0px;
+    
+}
+.prev-next-bottom {
+    margin-top: 0.5rem;
+    margin-bottom: 15rem;
+}
+.next-btn a{
+    position: absolute;
+    left: 63rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+
+    padding: 0.7em 2rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.next-btn a:hover{
+    background-color:var(--hover-color);
+}
+.prev-btn a{
+    position: absolute;
+    left: 5rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+    padding: 0.6em 1.4rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.prev-btn a:hover{
+    background-color:var(--hover-color);
+}
+
+.blue_box{
+    display: block;
+    width: 70%;
+    background-color: aliceblue;
+}
+.learn_py{
+    margin-top: 0px;
+    margin-left: 10px;
+    font-size: 40px;
+}
+.blue_box p{
+    font-size: 18px;
+    padding-left: 10px;
+}
+.start-btn{
+    padding-top: 30px;
+    margin-top: 30px;
+}
+.start_btn a{
+    padding: 1rem 2rem;
+    margin-left: 10px;
+    background-color: var(--main-color);
+    padding: 1rem,2rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--bg-color);
+}
+.start_btn a:hover{
+    background-color: var(--hover-color);
+}
+
+.learn_ex{
+    margin-top: 25px;
+    margin-left: 8rem;
+    font-size: 40px;
+}
+.after_learn_ex{
+    font-size: 18px;
+    margin-left: 8rem;
+    margin-bottom: 3rem;
+}
+
+
+.ex_box{
+    width: 80%;
+    height: 30%;
+    background-color: var(--snd-bg-color);
+    margin-left: 2rem;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+.ex_box p{
+    margin-top: 0px;
+    margin-left: 6rem;
+    padding: 5px;
+    font-size: 25px;
+}
+.code_bg{
+    background-color: var(--bg-color);
+    margin-left: 6rem;
+    margin-top: 15px;
+    padding-bottom: 5px;
+    border-left: 5px solid var(--main-color);
+}
+.code_bg pre{
+    padding-left: 6px;
+    font-size: 18px;
+
+}
+.try_btn{
+    margin-left: 6rem;
+    margin-top: 2rem;
+}
+.try_btn a{
+    position: static;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-top: 20px;
+
+
+    padding: 0.5em 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+}
+.try_btn a:hover{
+    background-color:var(--hover-color);
+}

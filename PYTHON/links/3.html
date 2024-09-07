@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+    background-color: #fff !important;
+    margin-top: 90px;
+    padding: 16px 32px 32px 32px;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+:root{
+    --bg-color: #fff;
+    --snd-bg-color:#dddfdf;
+    --text-color:#000;
+    --main-color: #007bff;
+    --hover-color: #0056b3;
+    --error-color: #ffdddd;
+}
+.welcome p{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 0.2rem;
+}
+.prev-next-top a{
+    position: absolute;
+    top: 125px;
+    margin-top: 60px;
+    
+}
+.prev-next-bottom{
+    margin-top: 0.5rem;
+    margin-bottom: 5rem;
+}
+.next-btn a{
+    position: absolute;
+    left: 40rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+
+    padding: 0.6em 1rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.next-btn a:hover{
+    background-color:var(--hover-color);
+}
+.prev-btn a{
+    position: absolute;
+    left: 3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-right: 50rem;
+    margin-bottom: 40px;
+    padding: 0.6em 1.4rem;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+    
+
+    
+}
+.prev-btn a:hover{
+    background-color:var(--hover-color);
+}
+
+
+h2 {
+    font-size: 32px;
+}
+h2 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+}
+/* h2 {
+    font-size: 30px;
+} */
+h2 {
+    display: block;
+    /* font-size: 1.5em; */
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* font-weight: bold; */
+    unicode-bidi: isolate;
+}
+h3 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+    font-size: 24px;
+}
+h3 {
+    display: block;
+    /* font-size: 1.17em; */
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* font-weight: bold; */
+    unicode-bidi: isolate;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+}
+p {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    font-size: 15px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+
+.ex_inbox{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    background-color: var(--text-color);
+    border-left:  5px solid var(--main-color);
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.ex_inbox pre{
+    color: var(--bg-color);
+}
+
+.ex_box{
+    max-width: 100%;
+    height: 30%;
+    background-color: var(--snd-bg-color);
+    margin-left: -1.2rem;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+.ex_box p{
+    margin-left: 2rem;
+    padding-top: 12px;
+    font-size: 25px;
+}
+.code_bg{
+    background-color: var(--bg-color);
+    margin-left: 2rem;
+    margin-top: 15px;
+    padding-bottom: 0px;
+    border-left: 5px solid var(--main-color);
+}
+.code_bg pre {
+    text-align: left;
+    padding-left: 6px;
+    font-size: 18px;
+
+}
+.try_btn{
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+.try_btn a{
+    position: static;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    margin-top: 20px;
+
+    text-decoration: none;
+    padding: 0.5em 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    
+}
+.try_btn a:hover{
+    background-color:var(--hover-color);
+}
+img{
+    align-items: center;
+    display: block;
+    padding-left: 5rem;
+    max-width: 80%;
+    height: auto;
+}
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="welcome">
+        <p>Python Syntax</p>
+    </div>
+    
+    <div class="prev-next-top">
+
+        <div class="next-btn">
+            <a href="Python_Comments.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="2.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+
+    <hr style="margin-top: 90px; opacity: 0.3;">
+
+    <h2>Execute Python Syntax</h2>
+    <p>As we learned in the previous page, Python syntax can be executed by writing directly in the Command Line:</p>
+
+
+        <div class="ex_inbox">
+            <pre>>>>print("Hellow, World!")
+Hellow,World!
+            </pre>
+
+    </div>
+
+    <p>Or by creating a python file on the server, using the .py file extension, and running it in the Command Line:</p>
+
+    <div class="ex_inbox" style="padding: 5px;">
+        <pre>C:\Users\Your Name>python myfile.py</pre>
+    </div>
+
+    <h2>Python Indentation</h2>
+    <p>Indentation refers to the spaces at the beginning of a code line.</p>
+    <p>Where in other programming languages the indentation in code is for readability only, the indentation in Python is very important.</p>
+    <p>Python uses indentation to indicate a block of code.</p>
+
+    <div class="ex_box">
+        <p>Example</p>
+    
+        <div class="code_bg">
+            <pre>if 5 > 2:
+    print("Five is greater than two!")
+            </pre>
+        </div>
+    
+        <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_indentation" target="_blank">Try it Yourself>></a></div>
+    </div>
+
+    <p>Python will give you an error if you skip this indentation.</p>
+
+    <div class="ex_box" style="background-color: var(--error-color);">
+        <p>Example</p>
+        <p style="font-size: 15px;">Syntax Error:</p>
+    
+        <div class="code_bg" style="border-left: 5px solid red";>
+            <pre>if 5 > 2:
+print("Five is greater than two!")
+            </pre>
+        </div>
+    
+        <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_indentation" target="_blank">Try it Yourself>></a></div>
+    </div>
+
+    <p>The number of spaces is up to you as a programmer, the most common use is four, but it has to be at least one.</p>
+
+    <div class="ex_box">
+        <p>Example</p>
+    
+        <div class="code_bg">
+            <pre>if 5 > 2:
+    print("Five is greater than two!")
+if 5 > 2:
+    print("Five is greater than two!")
+            </pre>
+        </div>
+    
+        <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_indentation2" target="_blank">Try it Yourself>></a></div>
+    </div>
+
+    <p>You have to use the same number of spaces in the same block of code, otherwise Python will give you an error:</p>
+
+    
+    <div class="ex_box" style="background-color: var(--error-color)">
+        <p>Example</p>
+        <p style="font-size: 15px;">Syntax Error:</p>
+    
+        <div class="code_bg" style="border-left: 5px solid red";>
+            <pre>if 5 > 2:
+    print("Five is greater than two!")
+        print("Five is greater than two!")
+            </pre>
+        </div>
+    
+        <div class="try_btn"><a href="https://www.w3schools.com/python/trypython.asp?filename=demo_indentation2_error" target="_blank">Try it Yourself>></a></div>
+    </div>
+    
+    
+    <hr style="margin-top: 40px; opacity: 0.3; margin-bottom: 20px;">
+
+    <h2 style="text-align: center;">Video: Python Syntax</h2>
+    <a href="https://www.youtube.com/watch?v=4WVZBtqqVM4" target="_blank"><img src="images/v2.png" alt="python intro"></a>
+
+    <hr style="margin-top: 50px; opacity: 0.3; margin-bottom: 20px;">
+
+
+    <div class="prev-next-bottom">
+
+        <div class="next-btn">
+            <a href="Python_Comments.html" class="next-btn">Next</a>
+        </div>
+        <div class="prev-btn">
+            <a href="3.html" class="prev-btn">Previous</a>
+        </div>
+
+    </div>
+</body>
+</html>
