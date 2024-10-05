@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import { signInWithEmailAndPassword, getAuth } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -31,7 +31,7 @@ submit.addEventListener("click", function(event) {
       // Signed up
       const user = userCredential.user;
       alert("Trying to Log in...");
-      window.location.href = "grand.html"
+      window.location.href = "dashboard.html"
       // ...
     })
     .catch((error) => {
