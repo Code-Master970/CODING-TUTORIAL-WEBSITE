@@ -262,6 +262,19 @@ span{
     opacity: 1;
 
 }
+.chatbot-img img{
+    
+    position: relative;
+    display: absolute;
+    left: -53rem;
+    height: 10rem;
+
+    border-radius: 10px;
+}
+.chatbot-img img:hover{
+    border: 3px solid blue;
+    box-shadow: 0 0 1.6rem var(--main-color);
+}
 .home-img::before{
     content:'CODING';
     position: absolute;

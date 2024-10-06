@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .message {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            max-width: 60%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: #D1E7DD;
+            text-align: left;
+            align-self: flex-start;
+        }
+
+        .bot-message {
+            background-color: #F8D7DA;
+            text-align: right;
+            align-self: flex-end;
+        }
+
+        #chat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spinner {
+            margin: 0 auto;
+            width: 20px;
+            height: 20px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col h-screen">
+    <div class="flex-1 overflow-auto p-4">
+        <div id="chat" class="space-y-4"></div>
+    </div>
+    <form id="chatForm" class="flex justify-between p-4 bg-white shadow-md">
+        <input type="text" id="userInput" placeholder="Ask me anything about coding..." class="border rounded p-2 flex-1 mr-2">
+        <button type="submit" class="bg-blue-500 text-white rounded p-2">Send</button>
+    </form>
+
+    <script>
+        const chatForm = document.getElementById('chatForm');
+        const userInput = document.getElementById('userInput');
+        const chat = document.getElementById('chat');
+
+        chatForm.onsubmit = function(e) {
+            e.preventDefault();
+            const input = userInput.value;
+            if (input) {
+                addMessage(`You: ${input}`, true);  // User message on the left
+                userInput.value = '';
+                provideAnswer(input);
+            }
+        };
+
+        function addMessage(message, isUser = true) {
+            const messageClass = isUser ? 'user-message' : 'bot-message';
+            chat.innerHTML += `<div class="message ${messageClass}">${message}</div>`;
+            chat.scrollTop = chat.scrollHeight; // Scroll to the bottom
+            saveChat();
+        }
+
+        const spinner = document.createElement('div');
+        spinner.className = 'spinner hidden';
+        document.body.appendChild(spinner);
+
+        function provideAnswer(input) {
+            
+            spinner.classList.remove('hidden'); // Show spinner
+
+            fetch('https://backend.buildpicoapps.com/aero/run/llm-api?pk=v1-Z0FBQUFBQm5BUENNeTJ0eUU4bDFQaVZ2OU1zQkdwVTl6elI4TEdYSnRKU3pVSlRnMjcwV1JPM0NKWk11RjJ3dmJXeERkdVlJLUs0bUFSLThZOFdLUV9BZS1NSEJXOXZfdVE9PQ==', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: input })
+            })
+            .then(response => response.json())
+            .then(data => {
+                spinner.classList.add('hidden'); // Hide spinner
+                if (data.status === 'success') {
+                    addMessage(`Chatbot: ${data.text}`, false);  // Chatbot message on the right
+                } else {
+                    addMessage('Chatbot: Sorry, an error occurred.', false);
+                    console.error(data);
+                }
+            })
+            .catch(error => {
+                spinner.classList.add('hidden'); // Hide spinner
+                addMessage('Chatbot: Sorry, there was a problem with your request.', false);
+                console.error(error);
+            });
+        }
+
+        function saveChat() {
+            const messages = Array.from(chat.querySelectorAll('.message')).map(msg => ({
+                text: msg.innerHTML,
+                isUser: msg.classList.contains('user-message')
+            }));
+            localStorage.setItem('chatHistory', JSON.stringify(messages));
+        }
+    </script>
+
+</body>
+</html>
