@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Picture Upload and Crop</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -162,6 +164,28 @@
             padding: 10px 20px;
             font-size: 16px;
         }
+
+        .talkbtn a{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 15px;
+            background-color: white;
+            color: black;
+            border: 1px solid blue;
+            border-radius: 15px;
+            cursor: pointer;
+
+            font-size: 20px;
+            font-weight: 400;
+
+        }
+        .talkbtn a:hover{
+            background-color: blue;
+            color: white;
+            transform: translateY(-5px);
+            transition: transform 0.7s ease;
+        }
     </style>
 </head>
 <body>
@@ -185,6 +209,10 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
                 </div>
             </a>
+
+            <div class="talkbtn">
+                <a href="codebot/chat.html" target="_blank"><i class='bx bxs-chat'></i> Talk to CODEBOT</a>
+            </div>
         </div>
 
         <!-- Hidden file input -->
@@ -199,6 +227,8 @@
             <button onclick="cancelCrop()">Cancel</button>
         </div>
     </div>
+
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script>
