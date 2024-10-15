@@ -5,13 +5,12 @@ import { createUserWithEmailAndPassword, getAuth } from "https://www.gstatic.com
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD8lLpF7MoNtskp0xe6JtRUJiRxHsnCt7s",
-  authDomain: "coding-tutorial-b86ea.firebaseapp.com",
-  projectId: "coding-tutorial-b86ea",
-  storageBucket: "coding-tutorial-b86ea.appspot.com",
-  messagingSenderId: "69497896410",
-  appId: "1:69497896410:web:1fd102d72ebfe86b8f94e3",
-  measurementId: "G-PFWLSJX50L"
+  apiKey: "AIzaSyAM4E-FtHan_1tGxHwK6AN9JE_bAcX8oEs",
+    authDomain: "coding-tutorial2.firebaseapp.com",
+    projectId: "coding-tutorial2",
+    storageBucket: "coding-tutorial2.appspot.com",
+    messagingSenderId: "573120403196",
+    appId: "1:573120403196:web:dd23046bba5a5f62abe979"
 };
 
 // Initialize Firebase
@@ -41,3 +40,13 @@ submit.addEventListener("click", function(event) {
       // ..
     });
 });
+
+// Resend verification email
+sendEmailVerification(auth.currentUser)
+    .then(() => {
+        console.log("Verification email resent.");
+    })
+    .catch((error) => {
+        console.error("Error resending verification email:", error);
+    });
+

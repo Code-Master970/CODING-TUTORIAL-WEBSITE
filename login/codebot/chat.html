@@ -50,6 +50,37 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* New CSS for mic icon */
+        .mic-icon {
+            background-color: #f0f0f0;
+            border: none;
+            margin-right: 10px;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .mic-icon.active {
+            background-color: #ffeb3b;
+        }
+
+        .stop-button {
+            margin-top: 10px;
+            background-color: #ff4c4c; /* Red color for stop button */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex; /* Flexbox for centering the icon */
+            align-items: center; /* Center the icon vertically */
+            justify-content: center; /* Center the icon horizontally */
+        }
+
+        .stop-button i {
+            margin-right: 5px; /* Space between icon and text */
+        }
     </style>
 </head>
 <body class="bg-gray-100 flex flex-col h-screen">
@@ -57,10 +88,10 @@
         <div id="chat" class="space-y-4"></div>
     </div>
     <form id="chatForm" class="flex justify-between p-4 bg-white shadow-md">
-        <a href="codebot/chat.html" target="_blank" class="text-gray-500 mr-2">
-            <i class='bx bxs-chat'></i>
-        </a>
-        <input type="text" id="userInput" placeholder="Ask me anything..." class="border rounded p-2 flex-1" >
+        <button type="button" class="mic-icon" id="micBtn">
+            <i class='bx bxs-microphone' style="font-size: 24px;"></i>
+        </button>
+        <input type="text" id="userInput" placeholder="Ask me anything..." class="border rounded p-2 flex-1">
         <button type="submit" class="bg-blue-500 text-white rounded p-2" style="padding: 3px 15px;">
             <i class='bx bxs-send'></i>  
         </button>
@@ -70,6 +101,52 @@
         const chatForm = document.getElementById('chatForm');
         const userInput = document.getElementById('userInput');
         const chat = document.getElementById('chat');
+        const micBtn = document.getElementById('micBtn');
+        let recognition;
+        let voices = [];
+        let currentUtterance = null; // Store the current utterance for stopping
+
+        // Load available voices
+        function loadVoices() {
+            voices = window.speechSynthesis.getVoices();
+            console.log(voices); // Log available voices to the console
+        }
+
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+
+        // Add mic functionality
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            micBtn.addEventListener('click', function() {
+                if (micBtn.classList.contains('active')) {
+                    recognition.stop();
+                    micBtn.classList.remove('active');
+                } else {
+                    recognition.start();
+                    micBtn.classList.add('active');
+                }
+            });
+
+            recognition.onresult = function(event) {
+                const speechResult = event.results[0][0].transcript;
+                addMessage(`You (voice): ${speechResult}`, true); // User's voice message
+                userInput.value = speechResult;
+                provideAnswer(speechResult); // Send the voice input as a query
+                micBtn.classList.remove('active');
+            };
+
+            recognition.onerror = function(event) {
+                micBtn.classList.remove('active');
+                console.error(event.error);
+            };
+        } else {
+            alert('Voice recognition not supported in this browser. Try using Chrome.');
+        }
 
         chatForm.onsubmit = function(e) {
             e.preventDefault();
@@ -106,7 +183,9 @@
             .then(data => {
                 spinner.classList.add('hidden'); // Hide spinner
                 if (data.status === 'success') {
-                    addMessage(`Chatbot: ${data.text}`, false);  // Chatbot message on the right
+                    const responseText = `Chatbot: ${data.text}`;
+                    addMessage(responseText, false);  // Chatbot message on the right
+                    speakText(data.text);  // Speak the chatbot response
                 } else {
                     addMessage('Chatbot: Sorry, an error occurred.', false);
                     console.error(data);
@@ -125,6 +204,53 @@
                 isUser: msg.classList.contains('user-message')
             }));
             localStorage.setItem('chatHistory', JSON.stringify(messages));
+        }
+
+        // Text-to-speech function using Web Speech API
+        function speakText(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            // Find an Indian voice based on the language or name
+            const indianFemaleVoice = voices.find(voice => 
+                voice.lang.includes('en-IN') || voice.name.includes('India')
+            );
+
+            if (indianFemaleVoice) {
+                utterance.voice = indianFemaleVoice;
+                console.log(`Selected voice: ${indianFemaleVoice.name} (${indianFemaleVoice.lang})`);
+            } else {
+                console.log("No Indian female voice found. Using default.");
+            }
+
+            // Set additional properties for more natural speech
+            utterance.pitch = 1.5;  // Adjust pitch for a more pronounced sound
+            utterance.rate = 1.2;   // Adjust rate for a more engaging pace
+            currentUtterance = utterance; // Store the current utterance for stopping
+            window.speechSynthesis.speak(utterance);
+
+            // Add Stop Speaking button if not already present
+            if (!document.querySelector('.stop-button')) {
+                const stopButton = document.createElement('button');
+                stopButton.className = 'stop-button';
+                stopButton.innerHTML = '<i class="bx bxs-volume-mute"></i>'; // Mute icon
+                stopButton.onclick = stopSpeaking;
+
+                // Append the button below the last message
+                const lastMessage = chat.lastChild;
+                if (lastMessage) {
+                    lastMessage.appendChild(stopButton);
+                }
+            }
+        }
+
+        function stopSpeaking() {
+            if (currentUtterance) {
+                window.speechSynthesis.cancel(); // Stop the current speaking
+                currentUtterance = null; // Reset current utterance
+                const stopButton = document.querySelector('.stop-button');
+                if (stopButton) {
+                    stopButton.remove(); // Remove the stop button
+                }
+            }
         }
     </script>
 </body>
