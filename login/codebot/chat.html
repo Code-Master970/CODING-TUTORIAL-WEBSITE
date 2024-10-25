@@ -67,11 +67,9 @@
 
         .stop-button {
             margin-top: 10px;
-            background-color: #ff4c4c; /* Red color for stop button */
-            color: white;
+            color: black;
+            font-size: x-large;
             padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
             display: flex; /* Flexbox for centering the icon */
             align-items: center; /* Center the icon vertically */
@@ -227,31 +225,35 @@
             currentUtterance = utterance; // Store the current utterance for stopping
             window.speechSynthesis.speak(utterance);
 
-            // Add Stop Speaking button if not already present
-            if (!document.querySelector('.stop-button')) {
-                const stopButton = document.createElement('button');
-                stopButton.className = 'stop-button';
-                stopButton.innerHTML = '<i class="bx bxs-volume-mute"></i>'; // Mute icon
-                stopButton.onclick = stopSpeaking;
+            // Remove any existing Stop Speaking button
+            const existingStopButton = document.querySelector('.stop-button');
+            if (existingStopButton) {
+                existingStopButton.remove(); // Remove the old stop button
+            }
 
-                // Append the button below the last message
-                const lastMessage = chat.lastChild;
-                if (lastMessage) {
-                    lastMessage.appendChild(stopButton);
-                }
+            // Add Stop Speaking button after the bot message
+            const stopButton = document.createElement('button');
+            stopButton.className = 'stop-button';
+            stopButton.innerHTML = '<i class="bx bxs-volume-mute"></i>'; // Mute icon
+            stopButton.onclick = stopSpeaking;
+
+            // Append the button below the last message
+            const lastMessage = chat.lastChild;
+            if (lastMessage && lastMessage.classList.contains('bot-message')) {
+                lastMessage.appendChild(stopButton); // Attach the button only to bot messages
             }
         }
 
+        // Stop speaking function
         function stopSpeaking() {
-            if (currentUtterance) {
-                window.speechSynthesis.cancel(); // Stop the current speaking
-                currentUtterance = null; // Reset current utterance
-                const stopButton = document.querySelector('.stop-button');
-                if (stopButton) {
-                    stopButton.remove(); // Remove the stop button
-                }
+            if (window.speechSynthesis.speaking && currentUtterance) {
+                window.speechSynthesis.cancel(); // Stop speaking
             }
         }
+
+        
+
+        
     </script>
 </body>
 </html>
