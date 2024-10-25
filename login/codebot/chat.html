@@ -23,8 +23,34 @@
 
         .bot-message {
             background-color: #F8D7DA;
-            text-align: right;
+            text-align: left;
             align-self: flex-end;
+            position: relative;
+        }
+
+        .code-content {
+            font-family: monospace;
+            white-space: pre-wrap;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .copy-button:hover {
+            opacity: 1;
         }
 
         #chat {
@@ -46,12 +72,6 @@
             display: none;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* New CSS for mic icon */
         .mic-icon {
             background-color: #f0f0f0;
             border: none;
@@ -71,13 +91,14 @@
             font-size: x-large;
             padding: 10px 15px;
             cursor: pointer;
-            display: flex; /* Flexbox for centering the icon */
-            align-items: center; /* Center the icon vertically */
-            justify-content: center; /* Center the icon horizontally */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .stop-button i {
-            margin-right: 5px; /* Space between icon and text */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -102,18 +123,15 @@
         const micBtn = document.getElementById('micBtn');
         let recognition;
         let voices = [];
-        let currentUtterance = null; // Store the current utterance for stopping
+        let currentUtterance = null;
 
-        // Load available voices
         function loadVoices() {
             voices = window.speechSynthesis.getVoices();
-            console.log(voices); // Log available voices to the console
         }
 
         window.speechSynthesis.onvoiceschanged = loadVoices;
         loadVoices();
 
-        // Add mic functionality
         if ('webkitSpeechRecognition' in window) {
             recognition = new webkitSpeechRecognition();
             recognition.continuous = false;
@@ -132,9 +150,9 @@
 
             recognition.onresult = function(event) {
                 const speechResult = event.results[0][0].transcript;
-                addMessage(`You (voice): ${speechResult}`, true); // User's voice message
+                addMessage(`You (voice): ${speechResult}`, true);
                 userInput.value = speechResult;
-                provideAnswer(speechResult); // Send the voice input as a query
+                provideAnswer(speechResult);
                 micBtn.classList.remove('active');
             };
 
@@ -142,24 +160,52 @@
                 micBtn.classList.remove('active');
                 console.error(event.error);
             };
-        } else {
-            alert('Voice recognition not supported in this browser. Try using Chrome.');
         }
 
         chatForm.onsubmit = function(e) {
             e.preventDefault();
             const input = userInput.value;
             if (input) {
-                addMessage(`You: ${input}`, true);  // User message on the left
+                addMessage(`You: ${input}`, true);
                 userInput.value = '';
                 provideAnswer(input);
             }
         };
 
         function addMessage(message, isUser = true) {
-            const messageClass = isUser ? 'user-message' : 'bot-message';
-            chat.innerHTML += `<div class="message ${messageClass}">${message}</div>`;
-            chat.scrollTop = chat.scrollHeight; // Scroll to the bottom
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            
+            if (!isUser && message.includes('```')) {
+                // Split message into text and code parts
+                const parts = message.split('```');
+                messageDiv.textContent = parts[0];
+                
+                if (parts[1]) {
+                    const codeContent = document.createElement('div');
+                    codeContent.className = 'code-content';
+                    codeContent.textContent = parts[1];
+                    
+                    const copyButton = document.createElement('button');
+                    copyButton.className = 'copy-button';
+                    copyButton.innerHTML = '<i class="bx bx-copy"></i> Copy';
+                    copyButton.onclick = () => {
+                        navigator.clipboard.writeText(parts[1].trim());
+                        copyButton.innerHTML = '<i class="bx bx-check"></i> Copied!';
+                        setTimeout(() => {
+                            copyButton.innerHTML = '<i class="bx bx-copy"></i> Copy';
+                        }, 2000);
+                    };
+                    
+                    messageDiv.appendChild(copyButton);
+                    messageDiv.appendChild(codeContent);
+                }
+            } else {
+                messageDiv.textContent = message;
+            }
+            
+            chat.appendChild(messageDiv);
+            chat.scrollTop = chat.scrollHeight;
             saveChat();
         }
 
@@ -168,7 +214,7 @@
         document.body.appendChild(spinner);
 
         function provideAnswer(input) {
-            spinner.classList.remove('hidden'); // Show spinner
+            spinner.classList.remove('hidden');
 
             fetch('https://backend.buildpicoapps.com/aero/run/llm-api?pk=v1-Z0FBQUFBQm5BUENNeTJ0eUU4bDFQaVZ2OU1zQkdwVTl6elI4TEdYSnRKU3pVSlRnMjcwV1JPM0NKWk11RjJ3dmJXeERkdVlJLUs0bUFSLThZOFdLUV9BZS1NSEJXOXZfdVE9PQ==', {
                 method: 'POST',
@@ -179,18 +225,18 @@
             })
             .then(response => response.json())
             .then(data => {
-                spinner.classList.add('hidden'); // Hide spinner
+                spinner.classList.add('hidden');
                 if (data.status === 'success') {
                     const responseText = `Chatbot: ${data.text}`;
-                    addMessage(responseText, false);  // Chatbot message on the right
-                    speakText(data.text);  // Speak the chatbot response
+                    addMessage(responseText, false);
+                    speakText(data.text);
                 } else {
                     addMessage('Chatbot: Sorry, an error occurred.', false);
                     console.error(data);
                 }
             })
             .catch(error => {
-                spinner.classList.add('hidden'); // Hide spinner
+                spinner.classList.add('hidden');
                 addMessage('Chatbot: Sorry, there was a problem with your request.', false);
                 console.error(error);
             });
@@ -204,56 +250,42 @@
             localStorage.setItem('chatHistory', JSON.stringify(messages));
         }
 
-        // Text-to-speech function using Web Speech API
         function speakText(text) {
             const utterance = new SpeechSynthesisUtterance(text);
-            // Find an Indian voice based on the language or name
             const indianFemaleVoice = voices.find(voice => 
                 voice.lang.includes('en-IN') || voice.name.includes('India')
             );
 
             if (indianFemaleVoice) {
                 utterance.voice = indianFemaleVoice;
-                console.log(`Selected voice: ${indianFemaleVoice.name} (${indianFemaleVoice.lang})`);
-            } else {
-                console.log("No Indian female voice found. Using default.");
             }
 
-            // Set additional properties for more natural speech
-            utterance.pitch = 1.5;  // Adjust pitch for a more pronounced sound
-            utterance.rate = 1.2;   // Adjust rate for a more engaging pace
-            currentUtterance = utterance; // Store the current utterance for stopping
+            utterance.pitch = 1.5;
+            utterance.rate = 1.2;
+            currentUtterance = utterance;
             window.speechSynthesis.speak(utterance);
 
-            // Remove any existing Stop Speaking button
             const existingStopButton = document.querySelector('.stop-button');
             if (existingStopButton) {
-                existingStopButton.remove(); // Remove the old stop button
+                existingStopButton.remove();
             }
 
-            // Add Stop Speaking button after the bot message
             const stopButton = document.createElement('button');
             stopButton.className = 'stop-button';
-            stopButton.innerHTML = '<i class="bx bxs-volume-mute"></i>'; // Mute icon
+            stopButton.innerHTML = '<i class="bx bxs-volume-mute"></i>';
             stopButton.onclick = stopSpeaking;
 
-            // Append the button below the last message
             const lastMessage = chat.lastChild;
             if (lastMessage && lastMessage.classList.contains('bot-message')) {
-                lastMessage.appendChild(stopButton); // Attach the button only to bot messages
+                lastMessage.appendChild(stopButton);
             }
         }
 
-        // Stop speaking function
         function stopSpeaking() {
             if (window.speechSynthesis.speaking && currentUtterance) {
-                window.speechSynthesis.cancel(); // Stop speaking
+                window.speechSynthesis.cancel();
             }
         }
-
-        
-
-        
     </script>
 </body>
 </html>
