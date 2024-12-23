@@ -60,14 +60,61 @@
                                 <button class="btn btn-primary" onclick="saveUserProfile()">Save changes</button>
                             </div>
                         </div>
-                        
-                        <!-- Other tabs omitted for brevity -->
+
+                        <!-- Change Password Tab -->
+                        <div class="tab-pane fade" id="account-change-password">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Current password</label>
+                                    <input type="password" class="form-control" id="current-password">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">New password</label>
+                                    <input type="password" class="form-control" id="new-password">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Confirm new password</label>
+                                    <input type="password" class="form-control" id="confirm-password">
+                                </div>
+                                <button class="btn btn-primary" onclick="changePassword()">Change password</button>
+                            </div>
+                        </div>
+
+                        <!-- Info Tab -->
+                        <div class="tab-pane fade" id="account-info">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Bio</label>
+                                    <textarea class="form-control" rows="3" placeholder="Tell us about yourself" id="bio"></textarea>
+                                </div>
+                                <button class="btn btn-primary" onclick="saveInfoChanges()">Save changes</button>
+                            </div>
+                        </div>
+
+                        <!-- Social Links Tab -->
+                        <div class="tab-pane fade" id="account-social-links">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Twitter</label>
+                                    <input type="text" class="form-control" placeholder="Twitter handle" id="twitter">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Facebook</label>
+                                    <input type="text" class="form-control" placeholder="Facebook profile link" id="facebook">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Instagram</label>
+                                    <input type="text" class="form-control" placeholder="Instagram profile" id="instagram">
+                                </div>
+                                <button class="btn btn-primary" onclick="saveSocialLinks()">Save changes</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="text-right mt-3">
-            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-default" onclick="resetAllFields()">Cancel</button>
         </div>
     </div>
 
@@ -96,43 +143,96 @@
         // Function to upload profile picture
         function uploadProfilePic() {
             const file = document.getElementById('profile-pic-input').files[0];
-            const userId = auth.currentUser.uid; // User is assumed to be logged in
+            const userId = auth.currentUser.uid;
 
-            if (file) {
+            if (file && userId) {
                 const storageRef = storage.ref('profilePictures/' + userId);
+
                 storageRef.put(file).then(snapshot => {
+                    console.log('File uploaded successfully');
                     snapshot.ref.getDownloadURL().then(downloadURL => {
-                        // Update profile picture URL in Firestore
+                        console.log('Download URL:', downloadURL);
+
                         db.collection('users').doc(userId).set({
                             profilePicture: downloadURL
-                        }, { merge: true });
-
-                        // Display the uploaded picture
-                        document.getElementById('profile-pic-preview').src = downloadURL;
-                        alert('Profile picture uploaded successfully');
+                        }, { merge: true }).then(() => {
+                            console.log('Profile picture URL updated in Firestore');
+                            document.getElementById('profile-pic-preview').src = downloadURL;
+                            alert('Profile picture uploaded successfully');
+                        }).catch((error) => {
+                            console.error('Error updating Firestore:', error);
+                        });
+                    }).catch((error) => {
+                        console.error('Error getting download URL:', error);
                     });
-                }).catch(error => {
+                }).catch((error) => {
                     console.error('Error uploading file:', error);
                 });
+            } else {
+                console.error('No file selected or user not logged in');
+                alert('Please select a file to upload and make sure you are logged in.');
             }
         }
 
         // Function to save user profile information
         function saveUserProfile() {
-            const userId = auth.currentUser.uid; // User is assumed to be logged in
+            const userId = auth.currentUser.uid;
             const username = document.getElementById('username').value;
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
 
-            db.collection('users').doc(userId).set({
-                username: username,
-                name: name,
-                email: email
-            }, { merge: true }).then(() => {
-                alert('User profile updated successfully');
-            }).catch(error => {
-                console.error('Error saving profile:', error);
-            });
+            if (userId) {
+                db.collection('users').doc(userId).set({
+                    username: username,
+                    name: name,
+                    email: email
+                }, { merge: true }).then(() => {
+                    console.log('User profile updated successfully');
+                    alert('User profile updated successfully');
+                }).catch(error => {
+                    console.error('Error saving profile:', error);
+                });
+            } else {
+                console.error('User not logged in');
+                alert('Please log in to update your profile.');
+            }
+        }
+
+        // Function to reset all fields to default values
+        function resetAllFields() {
+            resetProfilePic();
+
+            document.getElementById('username').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('current-password').value = '';
+            document.getElementById('new-password').value = '';
+            document.getElementById('confirm-password').value = '';
+            document.getElementById('bio').value = '';
+            document.getElementById('twitter').value = '';
+            document.getElementById('facebook').value = '';
+            document.getElementById('instagram').value = '';
+        }
+
+        // Function to reset profile picture input
+        function resetProfilePic() {
+            document.getElementById('profile-pic-input').value = '';
+            document.getElementById('profile-pic-preview').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png";
+        }
+
+        // Function to change password (dummy function, replace with actual logic)
+        function changePassword() {
+            alert('Change password functionality');
+        }
+
+        // Function to save changes in Info tab (dummy function, replace with actual logic)
+        function saveInfoChanges() {
+            alert('Info changes saved');
+        }
+
+        // Function to save changes in Social Links tab (dummy function, replace with actual logic)
+        function saveSocialLinks() {
+            alert('Social links saved');
         }
 
         // Function to resend verification email
@@ -147,26 +247,17 @@
                 });
         }
 
-        // Function to reset profile picture input
-        function resetProfilePic() {
-            document.getElementById('profile-pic-input').value = '';
-            document.getElementById('profile-pic-preview').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png"; // Reset to default
-        }
-
-        // Check if the email is verified and display the warning
-        function checkEmailVerification() {
-            if (!auth.currentUser.emailVerified) {
-                document.getElementById('email-warning').style.display = 'block';
-            } else {
-                document.getElementById('email-warning').style.display = 'none';
-            }
-        }
-
         // Call the checkEmailVerification function on page load
-        window.onload = checkEmailVerification;
+        window.onload = function() {
+            if (auth.currentUser) {
+                checkEmailVerification();
+            }
+        };
     </script>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Updated jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
